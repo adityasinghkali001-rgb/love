@@ -11,39 +11,68 @@ document.getElementById("loader");
 const music =
 document.getElementById("bgMusic");
 
-enterBtn.addEventListener("click",()=>{
+enterBtn.addEventListener(
+"click",
+()=>{
 
     music.play().catch(()=>{});
 
-    loader.style.display="none";
+    gsap.to(loader,{
+
+        opacity:0,
+
+        duration:1,
+
+        onComplete:()=>{
+
+            loader.style.display=
+            "none";
+
+        }
+
+    });
 
 });
 
 // =========================
 // FEATHERS
+// LESS FEATHERS
 // =========================
 
 const featherContainer =
-document.getElementById("featherContainer");
+document.getElementById(
+"featherContainer"
+);
 
 function createFeather(){
 
     const feather =
-    document.createElement("img");
+    document.createElement(
+    "img"
+    );
 
     feather.src =
     "assets/feather.png";
 
-    feather.style.position="absolute";
-    feather.style.left=Math.random()*100+"vw";
-    feather.style.top="-100px";
-    feather.style.width=
-    (20+Math.random()*25)+"px";
+    feather.style.position =
+    "absolute";
 
-    feather.style.opacity=
-    .4+Math.random()*.6;
+    feather.style.left =
+    Math.random()*100 +
+    "vw";
 
-    featherContainer.appendChild(
+    feather.style.top =
+    "-100px";
+
+    feather.style.width =
+    (12 + Math.random()*15)
+    + "px";
+
+    feather.style.opacity =
+    .3 + Math.random()*.4;
+
+    featherContainer
+    .appendChild(
     feather
     );
 
@@ -51,25 +80,25 @@ function createFeather(){
 
     [
 
-    {
-        transform:
-        "translateY(-100px) translateX(0px) rotate(0deg)"
-    },
+        {
+            transform:
+            "translateY(-100px) translateX(0px) rotate(0deg)"
+        },
 
-    {
-        transform:
-        "translateY(120vh) translateX(100px) rotate(360deg)"
-    }
+        {
+            transform:
+            "translateY(120vh) translateX(60px) rotate(180deg)"
+        }
 
     ],
 
     {
 
-    duration:
-    12000+
-    Math.random()*8000,
+        duration:
+        18000 +
+        Math.random()*8000,
 
-    iterations:1
+        iterations:1
 
     });
 
@@ -77,13 +106,13 @@ function createFeather(){
 
         feather.remove();
 
-    },20000);
+    },25000);
 
 }
 
 setInterval(
 createFeather,
-300
+1800
 );
 
 // =========================
@@ -95,7 +124,7 @@ ScrollTrigger
 );
 
 // =========================
-// TEXT ANIMATION
+// TEXT FADE
 // =========================
 
 gsap.utils.toArray(
@@ -104,14 +133,20 @@ gsap.utils.toArray(
 
     gsap.from(box,{
 
-        y:80,
+        y:60,
+
         opacity:0,
-        duration:1.5,
+
+        duration:1.2,
+
         ease:"power3.out",
 
         scrollTrigger:{
+
             trigger:box,
+
             start:"top 80%"
+
         }
 
     });
@@ -119,128 +154,46 @@ gsap.utils.toArray(
 });
 
 // =========================
-// IMAGE ANIMATIONS
+// SMOOTH IMAGE ZOOM
+// ALL SCENES
 // =========================
 
-const effects = [
-
-{scale:1.18},
-
-{x:80},
-
-{filter:"blur(0px)"},
-
-{filter:"brightness(1)"},
-
-{scale:1.25,x:40,y:-20},
-
-{rotate:2},
-
-{x:-80},
-
-{y:-80},
-
-{scale:1.3},
-
-{x:100},
-
-{scale:1.35},
-
-{scale:1.4,filter:"brightness(1.2)"}
-
-];
-
-effects.forEach((effect,index)=>{
-
-    const scene =
-    `.scene:nth-child(${index+1}) img`;
-
-    let from = {};
-
-    switch(index){
-
-        case 0:
-        from={scale:1};
-        break;
-
-        case 1:
-        from={x:-80,scale:1.1};
-        break;
-
-        case 2:
-        from={filter:"blur(15px)"};
-        break;
-
-        case 3:
-        from={filter:"brightness(.35)"};
-        break;
-
-        case 4:
-        from={scale:1,x:0,y:0};
-        break;
-
-        case 5:
-        from={rotate:-2,scale:1.05};
-        break;
-
-        case 6:
-        from={x:80,scale:1.1};
-        break;
-
-        case 7:
-        from={y:80,scale:1.1};
-        break;
-
-        case 8:
-        from={scale:1};
-        break;
-
-        case 9:
-        from={x:-100};
-        break;
-
-        case 10:
-        from={scale:1};
-        break;
-
-        case 11:
-        from={
-            scale:1,
-            filter:"brightness(.8)"
-        };
-        break;
-
-    }
+gsap.utils.toArray(
+".scene img"
+).forEach(img=>{
 
     gsap.fromTo(
 
-    scene,
+    img,
 
-    from,
+    {
+        scale:1
+    },
 
     {
 
-    ...effect,
+        scale:1.12,
 
-    scrollTrigger:{
+        ease:"none",
 
-        trigger:
-        `.scene:nth-child(${index+1})`,
+        scrollTrigger:{
 
-        start:"top bottom",
+            trigger:img,
 
-        end:"bottom top",
+            start:"top bottom",
 
-        scrub:true
+            end:"bottom top",
 
-    }
+            scrub:1
+
+        }
 
     });
 
 });
 
 // =========================
-// SECTION FADE
+// SCENE FADE
 // =========================
 
 gsap.utils.toArray(
@@ -249,7 +202,7 @@ gsap.utils.toArray(
 
     gsap.from(scene,{
 
-        opacity:.4,
+        opacity:.6,
 
         duration:1,
 
@@ -266,138 +219,89 @@ gsap.utils.toArray(
 });
 
 // =========================
-// SNAKE TITLE GLOW
+// JOURNEY PATH
+// LEFT TOP TO RIGHT END
 // =========================
 
-gsap.utils.toArray(
-".snake-title"
-).forEach(title=>{
+const path =
+document.getElementById(
+"journeyPath"
+);
 
-    gsap.from(title,{
+window.addEventListener(
+"scroll",
+()=>{
 
-        opacity:0,
+    const scrollTop =
+    window.pageYOffset;
 
-        y:50,
+    const docHeight =
+    document.body.scrollHeight -
+    window.innerHeight;
 
-        duration:1.2,
+    const progress =
+    scrollTop / docHeight;
 
-        scrollTrigger:{
+    const x =
+    15 + (
+    Math.sin(progress*12)
+    * 25
+    );
 
-            trigger:title,
+    if(path){
 
-            start:"top 85%"
+        path.style.background =
 
-        }
+        `linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255,45,149,.15),
+        transparent
+        )`;
+
+        path.style.transform =
+        `translateX(${x}vw)`;
+
+    }
+
+});
+
+// =========================
+// END HEART
+// =========================
+
+const endHeart =
+document.querySelector(
+".end-heart"
+);
+
+if(endHeart){
+
+    gsap.to(
+    endHeart,
+    {
+
+        scale:1.2,
+
+        duration:1,
+
+        repeat:-1,
+
+        yoyo:true,
+
+        ease:"power1.inOut"
 
     });
 
-});
-
-// =========================
-// CAMERA
-// =========================
-
-const camera =
-document.getElementById("camera");
-
-const canvas =
-document.getElementById("canvas");
-
-const captureBtn =
-document.getElementById("captureBtn");
-
-const photoPreview =
-document.getElementById("photoPreview");
-
-const finalPhoto =
-document.getElementById("finalPhoto");
-
-const popup =
-document.getElementById("thankPopup");
-
-const closePopup =
-document.getElementById("closePopup");
-
-if(camera){
-
-navigator.mediaDevices
-.getUserMedia({
-
-video:true
-
-})
-
-.then(stream=>{
-
-camera.srcObject =
-stream;
-
-})
-
-.catch(err=>{
-
-console.log(err);
-
-});
-
-}
-
-if(captureBtn){
-
-captureBtn.addEventListener(
-"click",
-()=>{
-
-const ctx =
-canvas.getContext("2d");
-
-canvas.width =
-camera.videoWidth;
-
-canvas.height =
-camera.videoHeight;
-
-ctx.drawImage(
-camera,
-0,
-0
-);
-
-const image =
-canvas.toDataURL(
-"image/png"
-);
-
-photoPreview.src =
-image;
-
-photoPreview.style.display=
-"block";
-
-finalPhoto.src =
-image;
-
-finalPhoto.style.display=
-"block";
-
-popup.style.display=
-"flex";
-
-});
 }
 
 // =========================
-// POPUP CLOSE
+// PERFORMANCE
 // =========================
 
-if(closePopup){
+ScrollTrigger.config({
 
-closePopup.addEventListener(
-"click",
-()=>{
-
-popup.style.display=
-"none";
+    autoRefreshEvents:
+    "DOMContentLoaded,load"
 
 });
-}
