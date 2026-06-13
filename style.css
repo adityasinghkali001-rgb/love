@@ -36,6 +36,34 @@ body{
     max-width:700px;
 }
 
+.heart-loader{
+
+    font-size:70px;
+
+    margin-bottom:15px;
+
+    animation:heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    25%{
+        transform:scale(1.15);
+    }
+
+    50%{
+        transform:scale(.95);
+    }
+
+    75%{
+        transform:scale(1.12);
+    }
+}
+
 .loader-box h1{
 
     font-size:clamp(3rem,8vw,6rem);
@@ -57,7 +85,65 @@ body{
 }
 
 /* =========================
-   START BUTTON
+   ECG
+========================= */
+
+.ecg-line{
+
+    width:260px;
+
+    height:50px;
+
+    margin:20px auto 0;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.ecg-line span{
+
+    position:absolute;
+
+    top:50%;
+
+    width:400px;
+
+    height:2px;
+
+    background:#ff2d95;
+
+    box-shadow:
+    0 0 10px #ff2d95,
+    0 0 20px #ff2d95;
+
+    animation:ecgMove 3s linear infinite;
+
+    clip-path:polygon(
+    0 50%,
+    15% 50%,
+    22% 50%,
+    26% 0,
+    30% 100%,
+    36% 20%,
+    42% 50%,
+    100% 50%);
+}
+
+@keyframes ecgMove{
+
+    from{
+        transform:translateX(-100%);
+    }
+
+    to{
+        transform:translateX(100%);
+    }
+
+}
+
+/* =========================
+   BUTTON
 ========================= */
 
 #enterBtn{
@@ -80,20 +166,14 @@ body{
 
     box-shadow:
     0 0 20px #ff2d95,
-    0 0 50px #ff2d95,
-    0 0 100px #ff2d95;
+    0 0 50px #ff2d95;
 
     transition:.4s;
 }
 
 #enterBtn:hover{
 
-    transform:scale(1.08);
-
-    box-shadow:
-    0 0 30px #ff2d95,
-    0 0 80px #ff2d95,
-    0 0 150px #ff2d95;
+    transform:scale(1.06);
 }
 
 /* =========================
@@ -110,7 +190,52 @@ body{
 
     pointer-events:none;
 
-    z-index:999;
+    z-index:50;
+}
+
+/* =========================
+   PINK PATH
+========================= */
+
+#journeyPath{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:40;
+}
+
+#journeyPath::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:4px;
+
+    height:100%;
+
+    left:15%;
+
+    background:
+    linear-gradient(
+    transparent,
+    #ff2d95,
+    transparent);
+
+    opacity:.45;
+
+    box-shadow:
+    0 0 15px #ff2d95;
 }
 
 /* =========================
@@ -138,8 +263,6 @@ body{
     background:#000;
 }
 
-/* PHONE FRIENDLY */
-
 .scene img{
 
     display:block;
@@ -148,9 +271,11 @@ body{
 
     height:100vh;
 
-    object-fit:contain;
+    object-fit:cover;
 
     background:#000;
+
+    will-change:transform;
 }
 
 /* =========================
@@ -175,10 +300,9 @@ body{
 
     background:
     linear-gradient(
-        rgba(0,0,0,.10),
-        rgba(0,0,0,.35),
-        rgba(0,0,0,.60)
-    );
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.35),
+    rgba(0,0,0,.65));
 }
 
 /* =========================
@@ -208,7 +332,7 @@ body{
     margin-bottom:15px;
 
     text-shadow:
-    0 0 20px rgba(255,255,255,.35);
+    0 0 20px rgba(255,255,255,.25);
 }
 
 .textBox p{
@@ -223,18 +347,40 @@ body{
 }
 
 /* =========================
+   END
+========================= */
+
+.end-heart{
+
+    font-size:80px;
+
+    margin-top:30px;
+
+    animation:heartBeat 1.2s infinite;
+}
+
+.thanks-text{
+
+    margin-top:20px;
+
+    color:#ffb7dc;
+}
+
+/* =========================
    MOBILE
 ========================= */
 
 @media(max-width:768px){
 
-    .loader-box h1{
+    .heart-loader{
+        font-size:55px;
+    }
 
+    .loader-box h1{
         font-size:2.5rem;
     }
 
     .loader-box p{
-
         font-size:.95rem;
     }
 
@@ -249,25 +395,13 @@ body{
         padding:16px 25px;
     }
 
-    .scene{
-
-        min-height:100vh;
-    }
-
     .scene img{
 
         width:100%;
 
         height:100vh;
 
-        object-fit:contain;
-
-        background:#000;
-    }
-
-    .overlay{
-
-        padding:15px;
+        object-fit:cover;
     }
 
     .textBox{
@@ -282,8 +416,6 @@ body{
         font-size:2.6rem;
 
         letter-spacing:2px;
-
-        margin-bottom:10px;
     }
 
     .textBox p{
@@ -292,35 +424,11 @@ body{
 
         line-height:1.6;
     }
-}
 
-/* =========================
-   TABLET
-========================= */
-
-@media(min-width:769px) and (max-width:1200px){
-
-    .scene img{
-
-        object-fit:contain;
+    .end-heart{
+        font-size:60px;
     }
 
-    .textBox h2{
-
-        font-size:4rem;
-    }
-}
-
-/* =========================
-   DESKTOP
-========================= */
-
-@media(min-width:1201px){
-
-    .scene img{
-
-        object-fit:contain;
-    }
 }
 
 /* =========================
@@ -328,7 +436,7 @@ body{
 ========================= */
 
 ::-webkit-scrollbar{
-    width:6px;
+    width:5px;
 }
 
 ::-webkit-scrollbar-track{
@@ -341,372 +449,4 @@ body{
     rgba(255,255,255,.3);
 
     border-radius:20px;
-}
-/* =========================================
-   EXTRA CSS ADD KAR STYLE.CSS KE END ME
-========================================= */
-
-/* HEART LOADER */
-
-.heart-loader{
-    font-size:70px;
-    margin-bottom:20px;
-    animation:heartBeat 1s infinite;
-}
-
-@keyframes heartBeat{
-
-    0%{
-        transform:scale(1);
-    }
-
-    25%{
-        transform:scale(1.2);
-    }
-
-    40%{
-        transform:scale(.95);
-    }
-
-    60%{
-        transform:scale(1.25);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
-}
-
-/* ECG LINE */
-
-.ecg-line{
-
-    width:280px;
-    height:60px;
-
-    margin:25px auto 0;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-.ecg-line span{
-
-    position:absolute;
-
-    width:500px;
-
-    height:2px;
-
-    background:#ff2d95;
-
-    top:50%;
-
-    box-shadow:
-    0 0 10px #ff2d95,
-    0 0 20px #ff2d95;
-
-    animation:ecgMove 3s linear infinite;
-
-    clip-path:polygon(
-    0 50%,
-    15% 50%,
-    20% 50%,
-    24% 0,
-    28% 100%,
-    34% 20%,
-    40% 50%,
-    100% 50%);
-}
-
-@keyframes ecgMove{
-
-    from{
-        transform:translateX(-100%);
-    }
-
-    to{
-        transform:translateX(100%);
-    }
-
-}
-
-/* SNAKE TITLE */
-
-.snake-title{
-
-    position:relative;
-
-    display:inline-block;
-}
-
-.snake-line{
-
-    position:absolute;
-
-    inset:-10px;
-
-    border:2px solid #ff2d95;
-
-    border-radius:50px;
-
-    opacity:.8;
-
-    box-shadow:
-    0 0 10px #ff2d95,
-    0 0 25px #ff2d95;
-
-    animation:snakeRun 4s linear infinite;
-}
-
-@keyframes snakeRun{
-
-    0%{
-        clip-path:inset(0 90% 90% 0);
-    }
-
-    25%{
-        clip-path:inset(0 0 90% 90%);
-    }
-
-    50%{
-        clip-path:inset(90% 0 0 90%);
-    }
-
-    75%{
-        clip-path:inset(90% 90% 0 0);
-    }
-
-    100%{
-        clip-path:inset(0 90% 90% 0);
-    }
-
-}
-
-/* CAMERA SECTION */
-
-.camera-section{
-
-    min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    padding:40px 20px;
-
-    background:#000;
-}
-
-.camera-box{
-
-    width:100%;
-
-    max-width:700px;
-
-    text-align:center;
-}
-
-.camera-heart{
-
-    font-size:70px;
-
-    margin-bottom:20px;
-
-    animation:heartBeat 1s infinite;
-}
-
-.camera-box h2{
-
-    font-size:clamp(2rem,6vw,4rem);
-
-    margin-bottom:15px;
-}
-
-.camera-box p{
-
-    color:rgba(255,255,255,.8);
-
-    margin-bottom:25px;
-
-    line-height:1.8;
-}
-
-#camera{
-
-    width:100%;
-
-    max-width:500px;
-
-    border-radius:20px;
-
-    display:block;
-
-    margin:auto;
-
-    border:2px solid #ff2d95;
-}
-
-#canvas{
-
-    display:none;
-}
-
-#photoPreview{
-
-    width:100%;
-
-    max-width:350px;
-
-    margin-top:20px;
-
-    display:none;
-
-    border-radius:20px;
-}
-
-#captureBtn{
-
-    margin-top:25px;
-
-    border:none;
-
-    cursor:pointer;
-
-    color:#fff;
-
-    font-size:18px;
-
-    border-radius:999px;
-
-    padding:16px 40px;
-
-    background:#ff2d95;
-
-    box-shadow:
-    0 0 20px #ff2d95,
-    0 0 50px #ff2d95;
-}
-
-/* THANK YOU POPUP */
-
-#thankPopup{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-    rgba(0,0,0,.92);
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    z-index:999999;
-}
-
-.popup-content{
-
-    width:90%;
-
-    max-width:600px;
-
-    text-align:center;
-
-    padding:40px;
-
-    border-radius:25px;
-
-    background:#111;
-
-    border:1px solid rgba(255,45,149,.4);
-
-    box-shadow:
-    0 0 40px rgba(255,45,149,.4);
-}
-
-.popup-heart{
-
-    font-size:90px;
-
-    animation:heartBeat 1s infinite;
-}
-
-.popup-content h2{
-
-    font-size:3rem;
-
-    margin:20px 0;
-}
-
-.popup-content p{
-
-    color:rgba(255,255,255,.85);
-
-    margin-bottom:20px;
-
-    line-height:1.8;
-}
-
-#finalPhoto{
-
-    width:100%;
-
-    max-width:280px;
-
-    border-radius:20px;
-
-    display:none;
-
-    margin:20px auto;
-}
-
-#closePopup{
-
-    border:none;
-
-    cursor:pointer;
-
-    color:#fff;
-
-    padding:14px 35px;
-
-    border-radius:999px;
-
-    background:#ff2d95;
-
-    margin-top:20px;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .heart-loader{
-        font-size:55px;
-    }
-
-    .ecg-line{
-        width:220px;
-    }
-
-    .camera-heart{
-        font-size:55px;
-    }
-
-    .popup-heart{
-        font-size:70px;
-    }
-
-    .popup-content h2{
-        font-size:2rem;
-    }
-
 }
