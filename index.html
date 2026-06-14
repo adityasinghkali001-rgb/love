@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cinematic Journey</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+</head>
+
+<body>
+
+<div id="loader">
+
+    <div class="loader-box">
+
+        <div class="heart-loader">❤️</div>
+
+        <h1>
+            Cinematic Journey
+        </h1>
+
+        <p>
+            A story told through moments
+        </p>
+
+        <button id="enterBtn">
+            Start Your Journey ✨
+        </button>
+
+        <div class="ecg-line">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div id="featherContainer"></div>
+
+<main id="story">
+
+<section class="scene">
+
+<img src="images/pimg1.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The Glance</h2>
+
+<p>
+One look was enough to make the world disappear.
+<br><br>
+In that single moment,
+everything else faded away.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg2.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The Blush</h2>
+
+<p>
+Your smile painted colors on my quiet heart.
+<br><br>
+A simple smile became
+my favorite memory.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg3.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The Wait</h2>
+
+<p>
+Every second felt longer when you weren't near.
+<br><br>
+Time moved slowly,
+but my thoughts always found you.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg4.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>A Sign</h2>
+
+<p>
+Maybe destiny whispers through the smallest moments.
+<br><br>
+Some paths are written long before
+two hearts finally meet.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg5.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>Your Hand</h2>
+
+<p>
+Holding your hand felt like finding home.
+<br><br>
+A place where every fear
+simply disappeared.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg6.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>As One</h2>
+
+<p>
+Two souls, one story, endless memories.
+<br><br>
+Different journeys,
+one beautiful destination.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg7.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The Cafe</h2>
+
+<p>
+Among a thousand voices,
+yours was my favorite.
+<br><br>
+Even in the loudest room,
+my heart always found you.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg8.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>Silence</h2>
+
+<p>
+Even silence felt beautiful beside you.
+<br><br>
+Because your presence
+said more than words ever could.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg9.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The Promise</h2>
+
+<p>
+No matter where life goes,
+I'll choose you.
+<br><br>
+Again and again,
+in every lifetime.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg10.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The Journey</h2>
+
+<p>
+Every path became meaningful
+when you walked with me.
+<br><br>
+Every step felt lighter,
+every dream felt closer.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg11.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>Forever</h2>
+
+<p>
+Some people become forever
+without even trying.
+<br><br>
+And somehow,
+you became my forever.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="scene">
+
+<img src="images/pimg12.png" alt="">
+
+<div class="overlay">
+
+<div class="textBox">
+
+<h2>The End</h2>
+
+<p>
+And if I had another lifetime,
+I'd find you again.
+<br><br>
+Because some souls
+are simply meant to meet forever.
+</p>
+
+<div class="end-heart">
+❤️
+</div>
+
+<p class="thanks-text">
+Thank you for being part
+of this journey.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

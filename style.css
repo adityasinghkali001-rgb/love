@@ -1,0 +1,464 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#000;
+    color:#fff;
+    overflow-x:hidden;
+    font-family:'Cormorant Garamond',serif;
+}
+
+/* =========================
+   LOADER
+========================= */
+
+#loader{
+    position:fixed;
+    inset:0;
+    background:#000;
+    z-index:999999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.loader-box{
+    text-align:center;
+    width:90%;
+    max-width:700px;
+}
+
+.heart-loader{
+
+    font-size:75px;
+
+    margin-bottom:20px;
+
+    animation:heartBeat 1.2s infinite;
+}
+
+@keyframes heartBeat{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    25%{
+        transform:scale(1.15);
+    }
+
+    50%{
+        transform:scale(.95);
+    }
+
+    75%{
+        transform:scale(1.12);
+    }
+}
+
+.loader-box h1{
+
+    font-size:clamp(3rem,8vw,6rem);
+
+    font-weight:300;
+
+    letter-spacing:4px;
+
+    margin-bottom:15px;
+}
+
+.loader-box p{
+
+    font-size:1.1rem;
+
+    color:rgba(255,255,255,.75);
+
+    margin-bottom:35px;
+}
+
+/* =========================
+   START BUTTON
+========================= */
+
+#enterBtn{
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    border-radius:999px;
+
+    padding:18px 60px;
+
+    background:#ff2d95;
+
+    box-shadow:
+    0 0 20px #ff2d95,
+    0 0 50px #ff2d95,
+    0 0 100px rgba(255,45,149,.4);
+
+    transition:.4s;
+}
+
+#enterBtn:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+    0 0 30px #ff2d95,
+    0 0 80px #ff2d95;
+}
+
+/* =========================
+   ECG
+========================= */
+
+.ecg-line{
+
+    width:260px;
+
+    height:50px;
+
+    margin:20px auto 0;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.ecg-line span{
+
+    position:absolute;
+
+    top:50%;
+
+    width:450px;
+
+    height:2px;
+
+    background:#ff2d95;
+
+    box-shadow:
+    0 0 10px #ff2d95,
+    0 0 20px #ff2d95;
+
+    animation:ecgMove 3s linear infinite;
+
+    clip-path:polygon(
+    0 50%,
+    15% 50%,
+    22% 50%,
+    26% 0,
+    30% 100%,
+    36% 20%,
+    42% 50%,
+    100% 50%);
+}
+
+@keyframes ecgMove{
+
+    from{
+        transform:translateX(-100%);
+    }
+
+    to{
+        transform:translateX(100%);
+    }
+}
+
+/* =========================
+   FEATHERS
+========================= */
+
+#featherContainer{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:5;
+}
+
+/* =========================
+   STORY
+========================= */
+
+#story{
+    width:100%;
+}
+
+/* =========================
+   SCENES
+========================= */
+
+.scene{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    background:#000;
+}
+
+.scene img{
+
+    display:block;
+
+    width:100%;
+
+    height:100vh;
+
+    object-fit:contain;
+
+    background:#000;
+
+    will-change:transform;
+
+    filter:drop-shadow(
+    0 0 15px rgba(255,255,255,.08));
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.05),
+    rgba(0,0,0,.25),
+    rgba(0,0,0,.50));
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.textBox{
+
+    width:100%;
+
+    max-width:950px;
+
+    padding:20px;
+
+    z-index:10;
+}
+
+.textBox h2{
+
+    font-size:
+    clamp(3rem,8vw,7rem);
+
+    font-weight:300;
+
+    letter-spacing:4px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 30px rgba(255,255,255,.6);
+}
+
+.textBox p{
+
+    font-size:
+    clamp(1rem,2vw,1.45rem);
+
+    line-height:1.9;
+
+    color:#fff;
+
+    font-weight:500;
+
+    text-shadow:
+    0 0 15px rgba(0,0,0,.5);
+}
+
+/* =========================
+   END HEART
+========================= */
+
+.end-heart{
+
+    font-size:90px;
+
+    margin-top:30px;
+
+    filter:
+    drop-shadow(
+    0 0 25px #ff2d95);
+
+    animation:
+    heartBeat 1.2s infinite;
+}
+
+.thanks-text{
+
+    margin-top:20px;
+
+    color:#ffb7dc !important;
+
+    font-size:1.2rem !important;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .heart-loader{
+        font-size:60px;
+    }
+
+    .loader-box h1{
+        font-size:2.5rem;
+    }
+
+    .loader-box p{
+        font-size:.95rem;
+    }
+
+    #enterBtn{
+
+        width:90%;
+
+        max-width:320px;
+
+        font-size:16px;
+
+        padding:16px 25px;
+    }
+
+    .scene{
+
+        min-height:100vh;
+    }
+
+    .scene img{
+
+        width:100%;
+
+        height:100vh;
+
+        object-fit:contain;
+    }
+
+    .overlay{
+
+        padding:15px;
+    }
+
+    .textBox{
+
+        width:100%;
+
+        padding:10px;
+    }
+
+    .textBox h2{
+
+        font-size:2.7rem;
+
+        letter-spacing:2px;
+    }
+
+    .textBox p{
+
+        font-size:1rem;
+
+        line-height:1.7;
+    }
+
+    .end-heart{
+        font-size:65px;
+    }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(min-width:769px) and (max-width:1200px){
+
+    .scene img{
+
+        object-fit:contain;
+    }
+
+    .textBox h2{
+
+        font-size:4rem;
+    }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:1201px){
+
+    .scene img{
+
+        object-fit:contain;
+    }
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+    width:6px;
+}
+
+::-webkit-scrollbar-track{
+    background:#000;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:
+    rgba(255,255,255,.3);
+
+    border-radius:20px;
+}
